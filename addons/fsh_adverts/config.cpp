@@ -14,7 +14,8 @@ class CfgPatches {
 
 
 
-class CfgMusic {
+class CfgSounds {
+	sounds[] = {};
 	class advert_1 {
 		name = "Advert";
 		duration = 38;

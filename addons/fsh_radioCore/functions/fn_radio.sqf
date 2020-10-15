@@ -25,10 +25,10 @@ fsh_getTime = compileFinal "
 //For these functions, _var = "#songname" call fsh_...
 fsh_getTrackCfg = compileFinal "
 	private ['_name','_cfg'];
-	_cfg = configFile >> 'CfgMusic' >> _this;
+	_cfg = configFile >> 'CfgSounds' >> _this;
 	_name = getText (_cfg >> 'name');
 	if (_name == '') then {
-		_cfg = missionConfigFile >> 'CfgMusic' >> _this;
+		_cfg = missionConfigFile >> 'CfgSounds' >> _this;
 		_name = getText (_cfg >> 'name');
 		if (_name == '') then {_cfg = ''};
 	};
@@ -59,10 +59,10 @@ fsh_arrayCycle = compileFinal "
 
 fsh_getTrackName = compileFinal "
 	private ['_name','_cfg'];
-	_cfg = configFile >> 'CfgMusic' >> _this;
+	_cfg = configFile >> 'CfgSounds' >> _this;
 	_name = getText (_cfg >> 'name');
 	if (_name == '') then {
-		_cfg = missionConfigFile >> 'CfgMusic' >> _this;
+		_cfg = missionConfigFile >> 'CfgSounds' >> _this;
 		_name = getText (_cfg >> 'name');
 	};
 	_name
@@ -81,10 +81,10 @@ fsh_getStationName = compileFinal "
 
 fsh_getTrackType = compileFinal "
 	private ['_type','_cfg'];
-	_cfg = configFile >> 'CfgMusic' >> _this;
+	_cfg = configFile >> 'CfgSounds' >> _this;
 	_type = getText (_cfg >> 'type');
 	if (_type == '') then {
-		_cfg = missionConfigFile >> 'CfgMusic' >> _this;
+		_cfg = missionConfigFile >> 'CfgSounds' >> _this;
 		_type = getText (_cfg >> 'type');
 		if (_type == '') then {_type = 'song';};
 	};
@@ -93,10 +93,10 @@ fsh_getTrackType = compileFinal "
 
 fsh_getTrackTheme = compileFinal "
 	private ['_theme','_cfg'];
-	_cfg = configFile >> 'CfgMusic' >> _this;
+	_cfg = configFile >> 'CfgSounds' >> _this;
 	_theme = getText (_cfg >> 'theme');
 	if (_theme == '') then {
-		_cfg = missionConfigFile >> 'CfgMusic' >> _this;
+		_cfg = missionConfigFile >> 'CfgSounds' >> _this;
 		_theme = getText (_cfg >> 'theme');
 	};
 	_theme
@@ -104,10 +104,10 @@ fsh_getTrackTheme = compileFinal "
 
 fsh_getTrackDuration = compileFinal "
 	private ['_duration','_cfg'];
-	_cfg = configFile >> 'CfgMusic' >> _this;
+	_cfg = configFile >> 'CfgSounds' >> _this;
 	_duration = getNumber (_cfg >> 'duration');
 	if (_duration == 0) then {
-		_cfg = missionConfigFile >> 'CfgMusic' >> _this;
+		_cfg = missionConfigFile >> 'CfgSounds' >> _this;
 		_duration = getNumber (_cfg >> 'duration');
 	};
 	_duration
@@ -115,10 +115,10 @@ fsh_getTrackDuration = compileFinal "
 
 fsh_getTrackArtist = compileFinal "
 	private ['_artist','_cfg','_dft'];
-	_cfg = configFile >> 'CfgMusic' >> _this;
+	_cfg = configFile >> 'CfgSounds' >> _this;
 	_dft = 'Unknown';
 	if (configName (_cfg) == '') then {
-		_cfg = missionConfigFile >> 'CfgMusic' >> _this;
+		_cfg = missionConfigFile >> 'CfgSounds' >> _this;
 		_dft = 'Valtteri Harju';
 	};
 	_artist = getText (_cfg >> 'artist');
@@ -204,8 +204,8 @@ fsh_filterTracks = compileFinal "
 //param 0: if true, any song will be included. Otherwise must contain 'fshRadio = 1' in song config
 fsh_getAllMusic = compileFinal "
 	_anySong = true;
-	_cfg = configFile >> 'CfgMusic';
-	_mission_cfg = missionConfigFile >> 'CfgMusic';
+	_cfg = configFile >> 'CfgSounds';
+	_mission_cfg = missionConfigFile >> 'CfgSounds';
 	_songs_unsorted = [];
 	for [{_i=0}, {_i < (count _cfg)}, {_i = _i + 1}] do {
 		_song = _cfg select _i;
@@ -235,8 +235,8 @@ fsh_getAllMusic = compileFinal "
 
 //get every single audio file that has a duration, you dirty dog
 fsh_getAllTracks = compileFinal "
-	_cfg = configFile >> 'CfgMusic';
-	_mission_cfg = missionConfigFile >> 'CfgMusic';
+	_cfg = configFile >> 'CfgSounds';
+	_mission_cfg = missionConfigFile >> 'CfgSounds';
 	_songs_unsorted = [];
 	for [{_i=0}, {_i < (count _cfg)}, {_i = _i + 1}] do {
 		_song = _cfg select _i;

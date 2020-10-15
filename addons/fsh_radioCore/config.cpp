@@ -27,8 +27,8 @@ class RscTitles {
 	#include "gui\radio_hud.hpp"
 };
 
-class CfgMusic {
-	
+class CfgSounds {
+	sounds[] = {};
 };
 
 class CfgRadioStations {

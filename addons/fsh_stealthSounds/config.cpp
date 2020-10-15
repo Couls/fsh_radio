@@ -41,7 +41,7 @@ class CfgRadioStations {
 	};
 };
 
-class CfgMusic {
+class CfgSounds {
 	class ss_1 {
 		name = "Stealth Sounds";
 		duration = 9;

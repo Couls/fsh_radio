@@ -42,7 +42,8 @@ class CfgRadioStations {
 };
 
 
-class CfgMusic {
+class CfgSounds {
+	sounds[] = {};
 	class cfm_1 {
 		name = "Caspar FM";
 		duration = 7;

@@ -1,0 +1,5 @@
+﻿///<'fsh_radioCore.pbo' properties via Mikero's dos tools, dll version 7.16>///
+prefix=fsh_radioCore
+//Pbo Type is: Arma Addon
+//Sha: 'A2C49E5C3DF348B822C37220B0E8A8A8CBC54C7C'
+//////</properties>//////

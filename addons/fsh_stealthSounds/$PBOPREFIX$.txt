@@ -1,0 +1,5 @@
+﻿///<'fsh_stealthSounds.pbo' properties via Mikero's dos tools, dll version 7.16>///
+prefix=fsh_stealthSounds
+//Pbo Type is: Arma Addon
+//Sha: '7D2264A4C2AD8819071389A7F7239725515E668E'
+//////</properties>//////

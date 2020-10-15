@@ -1,0 +1,5 @@
+﻿///<'fsh_casparfm.pbo' properties via Mikero's dos tools, dll version 7.16>///
+prefix=fsh_casparfm
+//Pbo Type is: Arma Addon
+//Sha: '6CDADEEC73C3FADF391632E889EA5F286F4DED6F'
+//////</properties>//////

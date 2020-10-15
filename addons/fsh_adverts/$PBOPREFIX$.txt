@@ -1,0 +1,5 @@
+﻿///<'fsh_adverts.pbo' properties via Mikero's dos tools, dll version 7.16>///
+prefix=fsh_adverts
+//Pbo Type is: Arma Addon
+//Sha: '3E60E2350EEE4E082850D9203CDA4B3BE9C67D6D'
+//////</properties>//////

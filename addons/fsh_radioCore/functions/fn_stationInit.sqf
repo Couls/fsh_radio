@@ -49,40 +49,42 @@ if (_debug) then {
 	diag_log '----categories-----';
 	{diag_log _x} forEach _categories;
 };
-
+_endTime = 0;
 //Now we have a program lined up, go ahead and launch
 while {true} do {
-	_track_duration = 1;
-	//--------- Manage the program running order ----------
-	_item = _program select 0;
-	_new_track = '';
-	_program = _program call fsh_arrayCycle;
-	//-----------------------------------------------------
-	//WE have an _item, now look up its cat and pick a track
-	for [{_i=0}, {_i < (count _categories) && _i < 10}, {_i = _i + 1}] do {
-		_curr_cat = _categories select _i;
-		_catName = _curr_cat select 0;
-		if (_catName == _item) then {
-			_tracks = _curr_cat select 1;
-			if (count _tracks > 0) then {
-				//Pick the first one from the list
-				_new_track = _tracks select 0;
-				_track_duration = _new_track call fsh_getTrackDuration;
-				//Update the list for next time
-				_tracks = _tracks call fsh_arrayCycle;
-				_curr_cat set [1, _tracks];
-				_categories set [_i, _curr_cat];
+	if (fsh_global_time >= _endTime) then {
+		_track_duration = 1;
+		//--------- Manage the program running order ----------
+		_item = _program select 0;
+		_new_track = '';
+		_program = _program call fsh_arrayCycle;
+		//-----------------------------------------------------
+		//WE have an _item, now look up its cat and pick a track
+		for "_i" from 0 to (count _categories min 10) do {
+			_curr_cat = _categories select _i;
+			_catName = _curr_cat select 0;
+			if (_catName == _item) exitWith {
+				_tracks = _curr_cat select 1;
+				if (count _tracks > 0) then {
+					//Pick the first one from the list
+					_new_track = _tracks select 0;
+					_track_duration = _new_track call fsh_getTrackDuration;
+					//Update the list for next time
+					_tracks = _tracks call fsh_arrayCycle;
+					_curr_cat set [1, _tracks];
+					_categories set [_i, _curr_cat];
+				};
+				
 			};
-			_i = count _categories;
 		};
+		if (_track_duration < 1) then {_track_duration = 4;};
+		
+		_current_time = floor (call fsh_getTime);
+		_endTime = _current_time + _track_duration;
+		
+		
+		missionnameSpace setVariable [_radio_var, [_new_track, _current_time, _endTime], true];
 	};
-	if (_track_duration < 1) then {_track_duration = 4;};
-	
-	_current_time = floor (call fsh_getTime);
-	_endTime = _current_time + _track_duration;
-	
-	
-	missionnameSpace setVariable [_radio_var, [_new_track, _current_time, _endTime], true];
-	waitUntil {sleep 2; fsh_global_time >= _endTime};
+	sleep 2;
 };
 _program = (_radio_cfg >> 'program') call BIS_fnc_GetCfgData;

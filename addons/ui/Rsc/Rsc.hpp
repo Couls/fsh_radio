@@ -1,4 +1,4 @@
-#include "\x\fsh_core\addons\ui\script_RscDialog.hpp"
+#include "\x\fsh_radio\addons\ui\script_RscDialog.hpp"
 
 class GVARMAIN(RscBase) {
     idc = -1;
